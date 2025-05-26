@@ -5,6 +5,9 @@ LIBS = -lcurl
 SOURCES := $(wildcard source/*.cpp)
 OBJECTS := $(patsubst source/%.cpp,build/%.o,$(SOURCES))
 
+#debug block only, remove in prod
+all: steamf2k.exe
+	@echo Reminder to silence make commands in prod
 
 steamf2k.exe: $(OBJECTS)
 	$(CXX) $^ -o $@ $(LIBS)
