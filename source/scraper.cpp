@@ -24,7 +24,7 @@ int main() { //once im done testing, this will need to not be main
 
 	CURLcode returnCode = curl_easy_perform(steamHandle);
 	if (returnCode != CURLE_OK) {
-		std::cout << curl_easy_strerror << "\n" 
+		std::cout << curl_easy_strerror << "\n";
 		std::cout << errorBuffer << "\n";
 		return -1;
 	}
