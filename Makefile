@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Wall -o2
+CXXFLAGS = -Wall -o2 -I include/
 LIBS = -lcurl
 
 SOURCES := $(wildcard source/*.cpp)
@@ -14,7 +14,7 @@ steamf2k.exe: $(OBJECTS)
 	
 build/%.o: source/%.cpp
 	-mkdir build
-	$(CXX) -c $< -o $@
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 .PHONY: clean
 clean:
@@ -25,3 +25,4 @@ clean:
 
 showobj:
 	echo $(OBJECTS)
+#also remove that in prod
