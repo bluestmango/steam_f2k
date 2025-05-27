@@ -1,5 +1,6 @@
 #include <curl/curl.h>
 #include <iostream>
+#include <fstream>
 #include <cstdlib> //for size_t
 
 
@@ -37,7 +38,20 @@ int main() { //once im done testing, this will need to not be main
 
 
 // define function to handle incoming data here
+size_t write_callback(char *incomingData, size_t size, size_t nmemb, void *userdata) {
 
+	fstream outputFile("steam_source.txt", ios::out | ios::app | ios::binary);
+	if (!outputFile) {
+		return -1;
+	}
+
+	if (outputFile << *incomingData) {
+		return size * nmemb;
+	}
+	else {
+		return -1;
+	}
+}
 
 
 
