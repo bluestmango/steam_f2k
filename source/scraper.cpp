@@ -2,7 +2,6 @@
 #include <iostream>
 #include <cstdlib> //for size_t
 
-using namespace std;
 
 //im brand new to libcurl, lots of comments incoming
 int main() { //once im done testing, this will need to not be main 
@@ -13,7 +12,7 @@ int main() { //once im done testing, this will need to not be main
 
 	if (!steamHandle) {
 		
-		cout << "Failed to create CURL handle\n";
+		std::cout << "Failed to create CURL handle\n";
 		return -1;
 	}
 	
@@ -22,9 +21,9 @@ int main() { //once im done testing, this will need to not be main
 	char errorBuffer[CURL_ERROR_SIZE];
 	curl_easy_setopt(&steamHandle, CURLOPT_ERRORBUFFER, &errorBuffer);
 
-	CURLcode returnCode = curl_easy_perform(steamHandle);
-	if (returnCode != CURLE_OK) {
-		std::cout << curl_easy_strerror << "\n";
+
+	if (curl_easy_perform(steamHandle) != CURLE_OK) {
+		std::cout << curl_easy_strerror << "\n" 
 		std::cout << errorBuffer << "\n";
 		return -1;
 	}
@@ -33,7 +32,6 @@ int main() { //once im done testing, this will need to not be main
 	curl_easy_cleanup(steamHandle);
 	
 	return 0;
-	
 	
 }
 
