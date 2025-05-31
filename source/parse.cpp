@@ -55,7 +55,8 @@ vector<game> findGames() {
 		}
 		
     }
-
+	
+	steam_source.close();
 	return gameList;
 }
 

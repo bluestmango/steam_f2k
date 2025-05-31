@@ -1,7 +1,8 @@
+#pragma once
+
 #include <vector>
 #include <string>
 
-#pragma once
 
 struct game {
     std::string title;

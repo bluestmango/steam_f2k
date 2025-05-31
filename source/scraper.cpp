@@ -6,17 +6,15 @@
 
 
 //im brand new to libcurl, lots of comments incoming
-int main() { //once im done testing, this will need to not be main 
-	
+int scrapeToFile() {
 	
 	//open output file
 	std::fstream outputFile("steam_source.txt", std::ios::out | std::ios::app);
 	if (!outputFile) {
+		std::cout << "Failed to create output file\n";
 		return -1;
 	}
 	
-	
-	curl_global_init(CURL_GLOBAL_ALL); //probably best to init in main(), but ill worry abt that later
 	CURL *steamHandle = curl_easy_init();
 
 	if (!steamHandle) {	
@@ -47,10 +45,8 @@ int main() { //once im done testing, this will need to not be main
 }
 
 
-// define function to handle incoming data here
 size_t write_callback(char *incomingData, size_t size, size_t nmemb, void *voidPtr) {
 
-	//too tired fo rthis rn, but need to convert to fstream ptr before writing data
 	std::fstream* outputFilePtr = static_cast<std::fstream*>(voidPtr);
 	
 	if (outputFilePtr->write(incomingData, size * nmemb)) {
