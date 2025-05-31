@@ -58,10 +58,3 @@ size_t write_callback(char *incomingData, size_t size, size_t nmemb, void *voidP
 	}
 	return -1;	
 }
-
-
-
-/* in scraped html file:
-	- "<!-- List Items -->" commment marks list start
-	- "<!-- End List Items -->" commment marks list end 
-*/

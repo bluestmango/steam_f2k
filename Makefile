@@ -24,6 +24,6 @@ clean:
 	rm -f $(wildcard *.o)
 #just to clean up any rogue objects
 
-showobj:
-	echo $(OBJECTS)
-#also remove that in prod
+debug: $(OBJECTS)
+	$(CXX) $(CXXFLAGS) build/main.o build/parse.o -o parsetest.exe
+#remove this too
