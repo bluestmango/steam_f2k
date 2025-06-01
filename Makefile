@@ -6,10 +6,10 @@ SOURCES := $(wildcard source/*.cpp)
 OBJECTS := $(patsubst source/%.cpp,build/%.o,$(SOURCES))
 
 #debug block only, remove in prod
-all: steamf2k.exe
+all: steamf2k
 	@echo Reminder to silence make commands in prod
 
-steamf2k.exe: $(OBJECTS)
+steamf2k: $(OBJECTS)
 	$(CXX) $^ -o $@ $(LIBS)
 	
 build/%.o: source/%.cpp
@@ -18,7 +18,7 @@ build/%.o: source/%.cpp
 
 .PHONY: clean
 clean:
-	rm -f steamf2k.exe
+	rm -f steamf2k.exe steamf2k
 	rm -f steam_source.txt
 	rm -rf build
 	rm -f $(wildcard *.o)
