@@ -3,4 +3,4 @@
 #include "game.hpp"
 #include <vector>
 
-bool updateLog(std::vector<game>& gamesList);
+void updateLog(std::vector<game>& gamesList);

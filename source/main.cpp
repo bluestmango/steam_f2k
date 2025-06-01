@@ -24,10 +24,7 @@ int main() {
 		return -1;
 	}
 	
-	if (!updateLog(gamesList)) {
-		cout << "Error saving game list";
-		return -1;
-	}
+	updateLog(gamesList);
 	
 	/*email up next. it's not written yet lol*/
 }
