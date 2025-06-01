@@ -19,7 +19,7 @@ build/%.o: source/%.cpp
 .PHONY: clean
 clean:
 	rm -f steamf2k.exe steamf2k
-	rm -f steam_source.txt
+	rm -f IDlog.txt
 	rm -rf build
 	rm -f $(wildcard *.o)
 #just to clean up any rogue objects
