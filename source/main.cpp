@@ -1,6 +1,8 @@
+#include "game.hpp"
+#include "log.hpp"
 #include "parse.hpp"
 #include "scraper.hpp"
-#include "curl/curl.h"
+#include <curl/curl.h>
 #include <iostream>
 #include <vector>
 using std::vector;
@@ -17,8 +19,13 @@ int main() {
 	vector gamesList = findGames();
 	
 	if(gamesList.size() == 0) {
-		cout << "Gamelist is empty. No games found\n";
+		cout << "Game list is empty. No games found\n";
 		curl_global_cleanup();
+		return -1;
+	}
+	
+	if (!updateLog(gamesList)) {
+		cout << "Error saving game list";
 		return -1;
 	}
 	

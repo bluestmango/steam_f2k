@@ -1,3 +1,4 @@
+#include "game.hpp"
 #include "parse.hpp"
 #include <string>
 #include <vector>
