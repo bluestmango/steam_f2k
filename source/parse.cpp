@@ -58,6 +58,7 @@ vector<game> findGames() {
     }
 	
 	steam_source.close();
+	std::remove("steam_source.txt");
 	return gameList;
 }
 
