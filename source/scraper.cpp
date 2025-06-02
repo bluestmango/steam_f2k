@@ -9,7 +9,7 @@
 int scrapeToFile() {
 	
 	//open output file
-	std::fstream outputFile("steam_source.txt", std::ios::out | std::ios::app);
+	std::fstream outputFile("steam_source.txt", std::ios::out | std::ios::trunc);
 	if (!outputFile) {
 		std::cout << "Failed to create output file\n";
 		return -1;
