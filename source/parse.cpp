@@ -9,7 +9,7 @@ using std::fstream;
 
 //outputFile from scraper.cpp is now steam_source
 
-vector<unsigned short> markQuotes(string line, char start ='\"', char end = '\"');
+vector<unsigned short> markQuotes(const string& line, const char& start ='\"', const char& end = '\"');
 
 vector<game> findGames() {
 
@@ -63,7 +63,7 @@ vector<game> findGames() {
 }
 
 
-vector<unsigned short> markQuotes(string line, char start, char end) {
+vector<unsigned short> markQuotes(const string& line, const char& start, const char& end) {
 
     for (unsigned short x=0; x<line.size()-1;x++) {
         if (line[x] == start) {
