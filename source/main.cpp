@@ -2,6 +2,7 @@
 #include "log.hpp"
 #include "parse.hpp"
 #include "scraper.hpp"
+#include "notification.hpp"
 #include <curl/curl.h>
 #include <iostream>
 #include <vector>
@@ -17,14 +18,19 @@ int main() {
 	}
 	
 	vector gamesList = findGames();
+	updateLog(gamesList);
+	cleanupGameList(gamesList); //deletes already-logged entries
+	
 	
 	if(gamesList.size() == 0) {
-		cout << "Game list is empty. No games found\n";
+		cout << "No new games found\n"; //try adding the time here. ctime lib?
 		curl_global_cleanup();
-		return -1;
-	}
+		return 0;
+	} //if we're still going, new titles are guaranteed
 	
-	updateLog(gamesList);
+	//alright lets send the email notifs
+	sendEmail(gamesList);
 	
-	/*email up next. it's not written yet lol*/
+	curl_global_cleanup();
+	return 0;
 }

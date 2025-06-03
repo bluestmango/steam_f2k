@@ -40,3 +40,13 @@ void updateLog(vector<game>& gamesList) {
 	}
 	IDlog.close();
 }
+
+void cleanupGameList(vector<game>& gameList) {
+	
+	for (unsigned short i=0; i<gameList.size(); i++) {
+		if (!gameList[i].isNew) {
+			gameList.erase(gameList.begin() + i);
+			i--;
+		}
+	}
+}
