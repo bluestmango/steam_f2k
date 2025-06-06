@@ -15,6 +15,7 @@ int main() {
 
 	if (scrapeToFile() != 0) {
 		cout << "Scraper error\n";
+		return 1;
 	}
 	
 	vector gamesList = findGames();
@@ -29,7 +30,10 @@ int main() {
 	} //if we're still going, new titles are guaranteed
 	
 	//alright lets send the email notifs
-	sendEmail(gamesList);
+	if (!sendEmail(gamesList)) {
+		curl_global_cleanup();
+		return 2;
+	}
 	
 	curl_global_cleanup();
 	return 0;
