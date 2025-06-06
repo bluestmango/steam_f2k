@@ -12,14 +12,14 @@ int scrapeToFile() {
 	std::fstream outputFile("steam_source.txt", std::ios::out | std::ios::trunc);
 	if (!outputFile) {
 		std::cout << "Failed to create output file\n";
-		return -1;
+		return 1;
 	}
 	
 	CURL *steamHandle = curl_easy_init();
 
 	if (!steamHandle) {	
 		std::cout << "Failed to create CURL handle\n";
-		return -1;
+		return 1;
 	}
 	
 	curl_easy_setopt(steamHandle, CURLOPT_URL, "https://store.steampowered.com/search/?maxprice=free&supportedlang=english&specials=1&ndl=1");
@@ -33,7 +33,7 @@ int scrapeToFile() {
 	if (res != CURLE_OK) {
 		std::cout << curl_easy_strerror(res) << "\n";
 		std::cout << errorBuffer << "\n";
-		return -1;
+		return 1;
 	}
 	
 	//deletes handle, we won't be needing it anymore
