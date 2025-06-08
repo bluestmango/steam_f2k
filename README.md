@@ -4,7 +4,7 @@ It is recommended to delete the notification email once you're done with it
 I plan to add better config in the future, rather than hardcoding most fields
 
 ### Setup 
-Everything beyond this point only needs to be done if you want to host this yourself.
+Anything beyond this point only needs to be done if you want to host this yourself.
 these instructions might move to separate files included in releases. For now, they're going here so i don't forget
 
 #### Windows
@@ -16,7 +16,8 @@ these instructions might move to separate files included in releases. For now, t
 6. Save the changes
 
 #### Linux
-Add the steamf2k binary to the crontab. I don't wanna put together a setup script rn
+Add the following line to the crontab: "11-59/20 * * * * cd /home/YOUR_FILEPATH_HERE/steam_f2k/ && ./steamf2k"
+Remove the quotes of course
 
 ### Building
 
