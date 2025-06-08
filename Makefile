@@ -4,8 +4,10 @@ LIBS = -lcurl
 
 SOURCES := $(wildcard source/*.cpp)
 OBJECTS := $(patsubst source/%.cpp,build/%.o,$(SOURCES))
-ICON := build/icon.res
 
+ifeq ($(OS),Windows_NT)
+	ICON := build/icon.res
+endif
 #debug block only, remove in prod
 all:steamf2k
 	@echo Reminder to silence make commands in prod

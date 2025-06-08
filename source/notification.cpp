@@ -3,6 +3,7 @@
 #include <vector>
 #include <iostream>
 #include <string>
+#include <cstring> //only required on linux somehow
 #include <curl/curl.h>
 
 std::string emailContent;
@@ -78,7 +79,7 @@ bool sendEmail(std::vector<game>& gamesList) {
 	curl_easy_setopt(emailHandle, CURLOPT_USE_SSL, (long)CURLUSESSL_ALL);//require ssl for all communication
 	
 	curl_easy_setopt(emailHandle, CURLOPT_USERNAME, "steamfree2keep@gmail.com");
-	curl_easy_setopt(emailHandle, CURLOPT_PASSWORD, "<password redacted>"); //obviously hardcoding this is not optimal. this will be fixed at some point in the future
+	curl_easy_setopt(emailHandle, CURLOPT_PASSWORD, "password redacted"); //obviously hardcoding this is not optimal. this will be fixed at some point in the future
 	
 	curl_easy_setopt(emailHandle, CURLOPT_MAIL_FROM, "<steamfree2keep@gmail.com>");
 	struct curl_slist *recipients = NULL;
@@ -92,7 +93,7 @@ bool sendEmail(std::vector<game>& gamesList) {
 	CURLcode res = curl_easy_perform(emailHandle);
 	if (res != CURLE_OK) {
 		std::cout << "Email not sent: curl_easy_perform() failed.\n";
-		std::cout << curl_easy_strerror(res);
+		std::cout << curl_easy_strerror(res) << "\n";
 		wasSuccessful = 0;
 	}
 	
