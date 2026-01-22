@@ -11,14 +11,14 @@ std::string emailContent;
 const char* composeEmail(std::vector<game>& gamesList) {
 	
 	emailContent = //yes, this works fine
-	"To: epiccryingmangos@gmail.com\r\n"
+	"To: all_recipients@domain.com\r\n"
 	"From: steamfree2keep@gmail.com\r\n" //optionally add cc line after this line
 	"Subject: New Game(s)\r\n"
 	"\r\n"; // empty line to divide headers from body
 	
 	//how tf do i insert them? thats future me's problem //oops guess im future me now
 	if (gamesList.size() == 1) {
-		emailContent += '\"' + gamesList[0].title + "\" ";
+		emailContent += '\"' + gamesList[0].title + '\" ';
 		emailContent += "is free on Steam: ";
 		emailContent += gamesList[0].url + "\r\n";
 	}
